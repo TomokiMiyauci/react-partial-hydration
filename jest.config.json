@@ -9,7 +9,8 @@
       },
       "moduleNameMapper": {
         "^@/(.*)$": "<rootDir>/lib/$1"
-      }
+      },
+      "setupFilesAfterEnv": ["<rootDir>/tests/setup/jest_dom.ts"]
     },
     {
       "displayName": "node",

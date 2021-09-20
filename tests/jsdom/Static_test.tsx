@@ -1,7 +1,6 @@
 import React from 'react'
 import Static from '@/Static'
 import { render } from '@testing-library/react'
-import '@testing-library/jest-dom'
 
 describe('Static', () => {
   const children = (
