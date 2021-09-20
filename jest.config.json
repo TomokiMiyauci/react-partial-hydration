@@ -1,0 +1,30 @@
+{
+  "projects": [
+    {
+      "displayName": "jsdom",
+      "testEnvironment": "jsdom",
+      "testMatch": ["<rootDir>/tests/jsdom/**/*_test.[tj]s?(x)"],
+      "transform": {
+        "^.+\\.(t|j)sx?$": "@swc/jest"
+      },
+      "moduleNameMapper": {
+        "^@/(.*)$": "<rootDir>/lib/$1"
+      }
+    },
+    {
+      "displayName": "node",
+      "testEnvironment": "node",
+      "testMatch": ["<rootDir>/tests/node/**/*_test.[tj]s?(x)"],
+      "transform": {
+        "^.+\\.(t|j)sx?$": "@swc/jest"
+      },
+      "moduleNameMapper": {
+        "^@/(.*)$": "<rootDir>/lib/$1"
+      }
+    }
+  ],
+  "clearMocks": true,
+  "collectCoverage": true,
+  "coverageDirectory": "coverage",
+  "coverageProvider": "v8"
+}

@@ -14,11 +14,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
       "@/*": ["lib/*"]
     }
   },
-  "include": ["lib", "_debug/main.tsx"]
+  "include": ["lib", "tests", "_debug/main.tsx"]
 }
