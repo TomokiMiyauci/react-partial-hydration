@@ -61,6 +61,33 @@ jobs:
       - name: Lint
         run: yarn lint
 
+  test:
+    needs: [setup]
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [16]
+
+    steps:
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Restore node_modules
+        id: node_modules_cache_id
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ matrix.os }}-node-v${{ matrix.node }}-deps-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
+
+      - name: Test
+        run: yarn test
+
   build:
     needs: [setup]
     runs-on: ${{ matrix.os }}
@@ -94,7 +121,7 @@ jobs:
           path: dist
 
   release:
-    needs: [lint, build]
+    needs: [lint, test, build]
     runs-on: ${{ matrix.os }}
 
     strategy:
