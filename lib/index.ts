@@ -1,3 +1,3 @@
 import Static from '@/Static'
-
-export { Static }
+import { useFallback } from '@/hooks'
+export { Static, useFallback }
