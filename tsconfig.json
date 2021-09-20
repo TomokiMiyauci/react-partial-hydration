@@ -17,8 +17,8 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["lib/*"]
     }
   },
-  "include": ["src"]
+  "include": ["lib", "_debug/main.tsx"]
 }

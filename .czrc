@@ -1,0 +1,10 @@
+{
+  "path": "cz-emoji",
+  "config": {
+    "cz-emoji": {
+      "skipQuestions": [
+        "scope"
+      ]
+    }
+  }
+}
