@@ -6,14 +6,33 @@ import '@testing-library/jest-dom'
 describe('Static', () => {
   const children = <div className="children">test</div>
 
-  it('should be empty innerHTML', () => {
-    const { container } = render(<Static>{children}</Static>, {
-      container: document.createElement('div')
-    })
+  it('should fallback to children when hydrated HTML is not exists', () => {
+    const onFallback = jest.fn()
+    const { container } = render(
+      <Static onFallback={onFallback}>{children}</Static>,
+      {
+        container: document.createElement('div')
+      }
+    )
 
     expect(
       container.querySelector('[style="display: contents;"]')
     ).not.toBeEmptyDOMElement()
+    expect(onFallback).toHaveBeenCalled()
+  })
+
+  it('should fallback to another component when pass fallback props', () => {
+    const textContent = 'This is fallback'
+    const html = render(
+      <Static fallback={<div data-testid="fallback">{textContent}</div>}>
+        {children}
+      </Static>,
+      {
+        container: document.createElement('div')
+      }
+    )
+
+    expect(html.getByTestId('fallback')).toHaveTextContent(textContent)
   })
 
   it('should be render any HTMLElement attribute', async () => {

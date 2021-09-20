@@ -27,13 +27,12 @@ const Static = <T extends keyof ReactHTML>({
   const _as = as ?? 'div'
 
   useEffect(() => {
-    if (!ref.current || !ref.current.innerHTML) {
-      if (fallback) {
-        const component = typeof fallback === 'boolean' ? children : fallback
+    if (ref.current && ref.current.innerHTML) return
+    if (fallback) {
+      const component = typeof fallback === 'boolean' ? children : fallback
 
-        hydrate(createElement(Fragment, {}, component), ref.current)
-        onFallback?.()
-      }
+      hydrate(createElement(Fragment, {}, component), ref.current)
+      onFallback?.()
     }
   }, [])
 
