@@ -4,7 +4,7 @@ import { renderToStaticMarkup } from 'react-dom/server'
 
 describe('Static', () => {
   const children = <div className="children">test</div>
-  it('should render wrapped', () => {
+  it('should render default html', () => {
     const markup = renderToStaticMarkup(<Static>{children}</Static>)
 
     expect(markup).toBe(
@@ -17,6 +17,18 @@ describe('Static', () => {
 
     expect(markup).toBe(
       `<span style="display:contents">${renderToStaticMarkup(children)}</span>`
+    )
+  })
+
+  it('should render with HTML attribute', () => {
+    const markup = renderToStaticMarkup(
+      <Static title="test">{children}</Static>
+    )
+
+    expect(markup).toBe(
+      `<div style="display:contents" title="test">${renderToStaticMarkup(
+        children
+      )}</div>`
     )
   })
 })
