@@ -31,4 +31,26 @@ describe('Static', () => {
       )}</div>`
     )
   })
+
+  it('should render style attribute with default display style', () => {
+    const html = renderToStaticMarkup(
+      <Static style={{ height: '100vh' }}>{children}</Static>
+    )
+
+    expect(html).toBe(
+      `<div style="display:contents;height:100vh">${renderToStaticMarkup(
+        children
+      )}</div>`
+    )
+  })
+
+  it('should override display style ', () => {
+    const html = renderToStaticMarkup(
+      <Static style={{ display: 'block' }}>{children}</Static>
+    )
+
+    expect(html).toBe(
+      `<div style="display:block">${renderToStaticMarkup(children)}</div>`
+    )
+  })
 })

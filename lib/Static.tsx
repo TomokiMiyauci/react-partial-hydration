@@ -21,6 +21,7 @@ const Static = <T extends keyof ReactHTML>({
   fallback = true,
   as,
   onFallback,
+  style,
   ...props
 }: Props<T>) => {
   const ref = useRef<HTMLDivElement>(null)
@@ -41,7 +42,8 @@ const Static = <T extends keyof ReactHTML>({
       _as,
       {
         style: {
-          display
+          display,
+          ...style
         },
         ...props
       },
@@ -51,7 +53,8 @@ const Static = <T extends keyof ReactHTML>({
   return createElement(_as, {
     ref,
     style: {
-      display
+      display,
+      ...style
     },
     ...props,
     ...DEFAULT_PROPS

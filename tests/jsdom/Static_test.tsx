@@ -4,7 +4,11 @@ import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 describe('Static', () => {
-  const children = <div className="children">test</div>
+  const children = (
+    <div data-testid="children" className="children">
+      test
+    </div>
+  )
 
   it('should fallback to children when hydrated HTML is not exists', () => {
     const onFallback = jest.fn()
@@ -33,6 +37,31 @@ describe('Static', () => {
     )
 
     expect(html.getByTestId('fallback')).toHaveTextContent(textContent)
+  })
+
+  it('should fallback to children with style props', () => {
+    const html = render(
+      <Static data-testid="static" style={{ height: '100vh' }}>
+        {children}
+      </Static>
+    )
+
+    expect(html.getByTestId('static')).toHaveStyle({
+      display: 'contents',
+      height: '100vh'
+    })
+  })
+
+  it('should fallback to children with override display style', () => {
+    const html = render(
+      <Static data-testid="static" style={{ display: 'block' }}>
+        {children}
+      </Static>
+    )
+
+    expect(html.getByTestId('static')).toHaveStyle({
+      display: 'block'
+    })
   })
 
   it('should be render any HTMLElement attribute', async () => {
