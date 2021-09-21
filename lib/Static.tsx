@@ -8,7 +8,7 @@ type Props<T extends keyof ReactHTML> = {
   children: JSX.Element
   as?: T
   /** When DOM is not exists, fallback to children or passed component */
-  fallback?: boolean | JSX.Element
+  fallback?: false | JSX.Element
   /** On fallback component is rendered, then fire */
   onFallback?: () => void
 } & DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>
@@ -25,7 +25,7 @@ type Props<T extends keyof ReactHTML> = {
  */
 const Static = <T extends keyof ReactHTML>({
   children,
-  fallback = true,
+  fallback = children,
   as,
   onFallback,
   style,
@@ -37,7 +37,7 @@ const Static = <T extends keyof ReactHTML>({
   useFallback(
     ref,
     {
-      fallback: fallback === true ? children : fallback,
+      fallback,
       afterRender: onFallback
     },
     []
