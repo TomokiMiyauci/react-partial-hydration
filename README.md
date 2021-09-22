@@ -264,8 +264,6 @@ Unfortunately, `React.lazy` doesn't support SSR yet.
 
 ### Third-party lazy components
 
-[Loadable Components](https://loadable-components.com/) は[公式](https://ja.reactjs.org/docs/code-splitting.html#reactlazy)で推奨されている、SSR 対応の Code Splitting library です。これを利用することで、サーバーサイドで lazy コンポーネントをレンダリングできます。
-
 [Loadable Components](https://loadable-components.com/) is the [officially](https://reactjs.org/docs/code-splitting.html#reactlazy) recommended Code Splitting library that supports SSR. By using it, you can render lazy components on the server side.
 
 > There are no dependencies in this project. You can also use solutions other than `Loadable Components`.
