@@ -22,7 +22,7 @@
     "test:unit": "jest",
     "build": "run-p build:*",
     "build:scripts": "vite build",
-    "build:types": "dts-bundle-generator --no-banner --external-imports=react --external-imports=react-dom -o dist/index.d.ts lib/index.ts",
+    "build:types": "dts-bundle-generator --no-check --no-banner --external-imports=react --external-imports=react-dom --external-imports=node -o dist/index.d.ts lib/index.ts",
     "serve": "vite preview",
     "release": "semantic-release"
   },
