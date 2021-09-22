@@ -1,3 +1,8 @@
+# [v1.0.0-beta.5](https://github.com/TomokiMiyauci/react-patial-hydration/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2021-09-22)
+
+## 🐛 Bug Fixes
+- [`fc55b29`](https://github.com/TomokiMiyauci/react-patial-hydration/commit/fc55b29)   Fix Intersection component to add root wrap element
+
 # [v1.0.0-beta.4](https://github.com/TomokiMiyauci/react-patial-hydration/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2021-09-22)
 
 ## ✨ New Features
