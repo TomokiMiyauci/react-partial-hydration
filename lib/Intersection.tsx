@@ -1,9 +1,9 @@
-import { useRef, createElement, useEffect } from 'react'
-import { isServer } from '@/utils'
-import { display, DEFAULT_PROPS } from '@/constants'
-import { useFallback } from '@/hooks'
+import { useRef, createElement, Fragment, CSSProperties } from 'react'
 import { hydrate } from 'react-dom'
-import type { ReactHTML, DetailedHTMLProps, HTMLAttributes } from 'react'
+import { display, DEFAULT_PROPS } from '@/constants'
+import { isServer } from '@/utils'
+import { useFallback, useIntersection } from '@/hooks'
+import type { ReactHTML } from 'react'
 
 type IntersectionProps<T extends keyof ReactHTML> = {
   children: JSX.Element
@@ -12,9 +12,9 @@ type IntersectionProps<T extends keyof ReactHTML> = {
   fallback?: false | JSX.Element
   /** On fallback component is rendered, then fire */
   onFallback?: () => void
-  keepRender?: boolean
-} & DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> &
-  IntersectionObserverInit
+  target?: JSX.Element
+  style?: CSSProperties
+} & IntersectionObserverInit
 
 /**
  * Lazy hydration component until intersection
@@ -32,7 +32,7 @@ const Intersection = <T extends keyof ReactHTML>({
   as,
   onFallback,
   style,
-  keepRender = true,
+  target = <div />,
   root,
   rootMargin,
   threshold,
@@ -44,36 +44,22 @@ const Intersection = <T extends keyof ReactHTML>({
   useFallback(
     ref,
     {
-      fallback
+      fallback: createElement(Fragment, null, [target, fallback])
     },
     []
   )
 
-  useEffect(() => {
-    if (!ref.current) return
+  useIntersection(ref, {
+    onIntersectIn: ({ IntersectionObserver, target: _target }) => {
+      if (_target) {
+        IntersectionObserver.unobserve(_target)
+      }
+      hydrate(createElement(Fragment, null, [target, children]), ref.current)
+    },
+    target: (ref) => ref.firstElementChild
+  })
 
-    const observer = new IntersectionObserver(
-      ([entry], obs) => {
-        if (entry.isIntersecting) {
-          hydrate(children, ref.current)
-          if (keepRender && ref.current) {
-            obs.unobserve(ref.current)
-          }
-        } else {
-          // keep
-        }
-      },
-      { root, rootMargin, threshold }
-    )
-
-    if (ref.current) {
-      observer.observe(ref.current)
-    }
-
-    return () => observer.disconnect()
-  }, [root, rootMargin, threshold])
-
-  if (isServer)
+  if (isServer) {
     return createElement(
       _as,
       {
@@ -83,8 +69,9 @@ const Intersection = <T extends keyof ReactHTML>({
         },
         ...props
       },
-      children
+      [target, children]
     )
+  }
 
   return createElement(_as, {
     ref,

@@ -30,4 +30,60 @@ const useFallback = <T extends HTMLElement = HTMLElement>(
   }, deps)
 }
 
-export { useFallback }
+type UseIntersection<T extends HTMLElement = HTMLElement> = {
+  onIntersectIn?: (opt: {
+    IntersectionObserverEntry: IntersectionObserverEntry
+    IntersectionObserver: IntersectionObserver
+    target: Element | null | undefined
+  }) => void
+  onIntersectOut?: (opt: {
+    IntersectionObserverEntry: IntersectionObserverEntry
+    IntersectionObserver: IntersectionObserver
+    target: Element | null | undefined
+  }) => void
+  target?: (ref: T) => Element | null | undefined
+} & IntersectionObserverInit
+
+const useIntersection = <T extends HTMLElement = HTMLElement>(
+  ref: RefObject<T>,
+  {
+    onIntersectIn,
+    onIntersectOut,
+    root,
+    rootMargin,
+    threshold,
+    target
+  }: UseIntersection
+) => {
+  useEffect(() => {
+    if (!ref.current) return
+    const el = target ? target(ref.current) : ref.current
+
+    const observer = new IntersectionObserver(
+      ([entry], obs) => {
+        if (entry.isIntersecting) {
+          onIntersectIn?.({
+            IntersectionObserverEntry: entry,
+            IntersectionObserver: obs,
+            target: el
+          })
+        } else {
+          onIntersectOut?.({
+            IntersectionObserverEntry: entry,
+            IntersectionObserver: obs,
+            target: el
+          })
+        }
+      },
+      { root, rootMargin, threshold }
+    )
+
+    if (el) {
+      observer.observe(el)
+    }
+
+    return observer.disconnect
+  }, [root, rootMargin, threshold])
+}
+
+export { useFallback, useIntersection }
