@@ -4,7 +4,7 @@ import { display, DEFAULT_PROPS } from '@/constants'
 import { useFallback } from '@/hooks'
 import type { ReactHTML, DetailedHTMLProps, HTMLAttributes } from 'react'
 
-type Props<T extends keyof ReactHTML> = {
+type StaticProps<T extends keyof ReactHTML> = {
   children: JSX.Element
   as?: T
   /** When DOM is not exists, fallback to children or passed component */
@@ -30,7 +30,7 @@ const Static = <T extends keyof ReactHTML>({
   onFallback,
   style,
   ...props
-}: Props<T>) => {
+}: StaticProps<T>) => {
   const ref = useRef<HTMLDivElement>(null)
   const _as = as ?? 'div'
 

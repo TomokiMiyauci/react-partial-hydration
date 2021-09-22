@@ -1,3 +1,4 @@
 import Static from '@/Static'
+import Intersection from '@/Intersection'
 import { useFallback } from '@/hooks'
-export { Static, useFallback }
+export { Static, Intersection, useFallback }
