@@ -1153,10 +1153,10 @@
     "@swc/core-win32-ia32-msvc" "1.2.89"
     "@swc/core-win32-x64-msvc" "1.2.89"
 
-"@swc/jest@0.1.5":
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@swc/jest/-/jest-0.1.5.tgz#102e0cd5e82aee8af2df633fcd3b4bcedb42ec1a"
-  integrity sha512-PKKaJ5wqjkpmqQjGVbZxsXn5bIFCToqS1RHg5RbZzLnBL0eOIg8cD3SsnW9d5+im8L6QAWl6pETLZE2QFYSrFA==
+"@swc/jest@0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@swc/jest/-/jest-0.2.3.tgz#5c32aaa6298267a955d35eb67094edabd5db598f"
+  integrity sha512-ARZIY5OkXdFRQLHc/1i+yKrl0H3B1sa7Bu9XE8yTvYZZ4G5Ewu6oyyJBM52TiROP6EpMcF7ZeQQsKMZvzuKkNw==
 
 "@testing-library/dom@^8.0.0":
   version "8.5.0"
