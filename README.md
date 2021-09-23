@@ -62,6 +62,7 @@ import { Static } from 'react-partial-hydration'
 | `as`         | `div`      | `keyof ReactHTML` ? <br />`Static` component should render as.                                                      |
 | `fallback`   | `children` | `false` &#124; `JSX.Element` ? <br />When The DOM is not exists, fallback to `children` or passed component or not. |
 | `onFallback` | -          | `() => void` ? <br />On fallback component is rendered, then fire                                                   |
+| `isServer`   | -          | `boolean` ? <br /> For debugging, switch rendering environment server side or client side                           |
 | `...props`   | -          | `DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>` ? <br />All attributes to render `Static` component.  |
 
 #### SSR render

@@ -1,5 +1,5 @@
 import { useRef, createElement } from 'react'
-import { isServer } from '@/utils'
+import { isServer as _isServer } from '@/utils'
 import { display, DEFAULT_PROPS } from '@/constants'
 import { useFallback } from '@/hooks'
 import type { ReactHTML, DetailedHTMLProps, HTMLAttributes } from 'react'
@@ -13,6 +13,8 @@ type StaticProps<T extends keyof ReactHTML> = {
   fallback?: false | JSX.Element
   /** On fallback component is rendered, then fire */
   onFallback?: () => void
+  /** For debugging, switch rendering environment server side or client side */
+  isServer?: boolean
 } & DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>
 
 /**
@@ -27,10 +29,11 @@ type StaticProps<T extends keyof ReactHTML> = {
  */
 const Static = <T extends keyof ReactHTML>({
   children,
-  fallback = children,
   as,
+  fallback = children,
   onFallback,
   style,
+  isServer = _isServer,
   ...props
 }: StaticProps<T>): JSX.Element => {
   const ref = useRef<HTMLDivElement>(null)
