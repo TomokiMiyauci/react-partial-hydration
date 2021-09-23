@@ -6,8 +6,9 @@
         "pragma": "React.createElement",
         "pragmaFrag": "React.Fragment",
         "throwIfNamespace": true,
-        "development": false,
-        "useBuiltins": false
+        "development": true,
+        "useBuiltins": false,
+        "runtime": "automatic"
       }
     },
     "parser": {
