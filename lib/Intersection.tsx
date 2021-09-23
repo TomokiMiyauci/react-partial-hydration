@@ -1,9 +1,9 @@
-import { useRef, createElement, Fragment, CSSProperties } from 'react'
+import { useRef, createElement, Fragment, cloneElement } from 'react'
 import { hydrate } from 'react-dom'
 import { display, DEFAULT_PROPS } from '@/constants'
 import { isServer } from '@/utils'
 import { useFallback, useIntersection } from '@/hooks'
-import type { ReactHTML } from 'react'
+import type { ReactHTML, DetailedHTMLProps, HTMLAttributes } from 'react'
 
 type IntersectionProps<T extends keyof ReactHTML> = {
   children: JSX.Element
@@ -13,8 +13,8 @@ type IntersectionProps<T extends keyof ReactHTML> = {
   /** On fallback component is rendered, then fire */
   onFallback?: () => void
   target?: JSX.Element
-  style?: CSSProperties
-} & IntersectionObserverInit
+} & IntersectionObserverInit &
+  DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>
 
 /**
  * Lazy hydration component until intersection
@@ -40,11 +40,13 @@ const Intersection = <T extends keyof ReactHTML>({
 }: IntersectionProps<T>) => {
   const ref = useRef<HTMLDivElement>(null)
   const _as = as ?? 'div'
+  const targetWithKey = cloneElement(target, { key: 'target' })
+  const childrenWithKey = cloneElement(children, { key: 'children' })
 
   useFallback(
     ref,
     {
-      fallback: createElement(Fragment, null, [target, fallback])
+      fallback: createElement(Fragment, null, [targetWithKey, fallback])
     },
     []
   )
@@ -54,7 +56,10 @@ const Intersection = <T extends keyof ReactHTML>({
       if (_target) {
         IntersectionObserver.unobserve(_target)
       }
-      hydrate(createElement(Fragment, null, [target, children]), ref.current)
+      hydrate(
+        createElement(Fragment, null, [targetWithKey, childrenWithKey]),
+        ref.current
+      )
     },
     target: (ref) => ref.firstElementChild
   })
@@ -69,7 +74,7 @@ const Intersection = <T extends keyof ReactHTML>({
         },
         ...props
       },
-      [target, children]
+      [targetWithKey, childrenWithKey]
     )
   }
 
