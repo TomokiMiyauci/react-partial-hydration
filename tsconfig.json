@@ -20,5 +20,5 @@
       "@/*": ["lib/*"]
     }
   },
-  "include": ["lib", "tests", "_debug/main.tsx"]
+  "include": ["lib", "tests", "_debug/main.tsx", "_debug/vite-env.d.ts"]
 }

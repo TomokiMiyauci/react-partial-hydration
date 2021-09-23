@@ -6,12 +6,15 @@ import { useFallback, useIntersection } from '@/hooks'
 import type { ReactHTML, DetailedHTMLProps, HTMLAttributes } from 'react'
 
 type IntersectionProps<T extends keyof ReactHTML> = {
+  /** The children component */
   children: JSX.Element
+  /** `Intersection` component should render as */
   as?: T
   /** When DOM is not exists, fallback to children or passed component */
   fallback?: false | JSX.Element
   /** On fallback component is rendered, then fire */
   onFallback?: () => void
+  /** Target used for intersection */
   target?: JSX.Element
 } & IntersectionObserverInit &
   DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>
@@ -37,7 +40,7 @@ const Intersection = <T extends keyof ReactHTML>({
   rootMargin,
   threshold,
   ...props
-}: IntersectionProps<T>) => {
+}: IntersectionProps<T>): JSX.Element => {
   const ref = useRef<HTMLDivElement>(null)
   const _as = as ?? 'div'
   const targetWithKey = cloneElement(target, { key: 'target' })
