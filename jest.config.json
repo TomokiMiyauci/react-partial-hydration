@@ -1,9 +1,9 @@
 {
   "projects": [
     {
-      "displayName": "jsdom",
+      "displayName": "browser",
       "testEnvironment": "jsdom",
-      "testMatch": ["<rootDir>/tests/jsdom/**/*_test.[tj]s?(x)"],
+      "testMatch": ["<rootDir>/tests/browser/**/*_test.[tj]s?(x)"],
       "transform": {
         "^.+\\.(t|j)sx?$": "@swc/jest"
       },
@@ -13,9 +13,9 @@
       "setupFilesAfterEnv": ["<rootDir>/tests/setup/jest_dom.ts"]
     },
     {
-      "displayName": "node",
+      "displayName": "server",
       "testEnvironment": "node",
-      "testMatch": ["<rootDir>/tests/node/**/*_test.[tj]s?(x)"],
+      "testMatch": ["<rootDir>/tests/server/**/*_test.[tj]s?(x)"],
       "transform": {
         "^.+\\.(t|j)sx?$": "@swc/jest"
       },

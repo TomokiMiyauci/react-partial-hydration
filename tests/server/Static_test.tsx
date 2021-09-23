@@ -1,4 +1,3 @@
-import React from 'react'
 import Static from '@/Static'
 import { renderToStaticMarkup } from 'react-dom/server'
 

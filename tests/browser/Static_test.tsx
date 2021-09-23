@@ -1,4 +1,3 @@
-import React from 'react'
 import Static from '@/Static'
 import { render } from '@testing-library/react'
 
