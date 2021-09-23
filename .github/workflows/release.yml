@@ -91,7 +91,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: coverage
-          path: clover.xml
+          path: coverage/clover.xml
 
   report-coverage:
     needs: test
@@ -111,7 +111,7 @@ jobs:
 
       - uses: codecov/codecov-action@v1
         with:
-          files: coverage/clover.xml
+          files: clover.xml
 
   build:
     needs: [setup]
