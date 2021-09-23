@@ -1,3 +1,8 @@
+# [v1.0.0-beta.7](https://github.com/TomokiMiyauci/react-patial-hydration/compare/v1.0.0-beta.6...v1.0.0-beta.7) (2021-09-23)
+
+## 🐛 Bug Fixes
+- [`fa87d63`](https://github.com/TomokiMiyauci/react-patial-hydration/commit/fa87d63)   Fix output type definition
+
 # [v1.0.0-beta.6](https://github.com/TomokiMiyauci/react-patial-hydration/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2021-09-23)
 
 ## 🐛 Bug Fixes
