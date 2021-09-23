@@ -1,5 +1,11 @@
 # react-partial-hydration
 
+![hero image](https://res.cloudinary.com/dz3vsv9pg/image/upload/c_scale,w_800/v1632392020/projects/react-partial-hydration/hero.png)
+
+[![codecov](https://codecov.io/gh/TomokiMiyauci/react-patial-hydration/branch/main/graph/badge.svg?token=uEgVrj9bof)](https://codecov.io/gh/TomokiMiyauci/react-patial-hydration)
+
+---
+
 React component to delay or skip hydration.
 
 It can be combined with lazy component to achieve the best performance. See [React.lazy](#Lazy-component) for details.
