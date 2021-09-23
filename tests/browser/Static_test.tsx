@@ -12,7 +12,9 @@ describe('Static', () => {
 
   it('should keep dom tree when markup HTML on server side is same client side parent HTML tag', () => {
     const container = document.createElement('div')
-    container.innerHTML = renderToStaticMarkup(<Static ssr>{children}</Static>)
+    container.innerHTML = renderToStaticMarkup(
+      <Static isServer>{children}</Static>
+    )
     document.body.appendChild(container)
 
     const html = render(<Static>{children}</Static>, {
@@ -34,7 +36,7 @@ describe('Static', () => {
       style: { display: 'block' }
     }
     container.innerHTML = renderToStaticMarkup(
-      <Static {...props} ssr>
+      <Static {...props} isServer>
         {children}
       </Static>
     )
@@ -62,7 +64,7 @@ describe('Static', () => {
       'data-testid': 'parent'
     }
     container.innerHTML = renderToStaticMarkup(
-      <Static {...props} ssr>
+      <Static {...props} isServer>
         {children}
       </Static>
     )
@@ -83,7 +85,9 @@ describe('Static', () => {
   it('should not fire onFallback when markup HTML on server side is same client side parent HTML tag', () => {
     const onFallback = jest.fn()
     const container = document.createElement('div')
-    container.innerHTML = renderToStaticMarkup(<Static ssr>{children}</Static>)
+    container.innerHTML = renderToStaticMarkup(
+      <Static isServer>{children}</Static>
+    )
     document.body.appendChild(container)
 
     render(<Static onFallback={onFallback}>{children}</Static>, {
@@ -104,7 +108,7 @@ describe('Static', () => {
     const onFallback = jest.fn()
     const container = document.createElement('div')
     container.innerHTML = renderToStaticMarkup(
-      <Static ssr>
+      <Static isServer>
         <Children ssr />
       </Static>
     )
@@ -134,7 +138,7 @@ describe('Static', () => {
     const onFallback = jest.fn()
     const container = document.createElement('div')
     container.innerHTML = renderToStaticMarkup(
-      <Static ssr>
+      <Static isServer>
         <Children />
       </Static>
     )
