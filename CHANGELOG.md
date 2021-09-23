@@ -1,3 +1,8 @@
+# [v1.0.0-beta.6](https://github.com/TomokiMiyauci/react-patial-hydration/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2021-09-23)
+
+## 🐛 Bug Fixes
+- [`0db890a`](https://github.com/TomokiMiyauci/react-patial-hydration/commit/0db890a)   Add props of key
+
 # [v1.0.0-beta.5](https://github.com/TomokiMiyauci/react-patial-hydration/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2021-09-22)
 
 ## 🐛 Bug Fixes
