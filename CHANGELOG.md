@@ -1,3 +1,8 @@
+# [v1.0.0-beta.8](https://github.com/TomokiMiyauci/react-patial-hydration/compare/v1.0.0-beta.7...v1.0.0-beta.8) (2021-09-25)
+
+## 🐛 Bug Fixes
+- [`2874b81`](https://github.com/TomokiMiyauci/react-patial-hydration/commit/2874b81)   Fix fire onFallback
+
 # [v1.0.0-beta.7](https://github.com/TomokiMiyauci/react-patial-hydration/compare/v1.0.0-beta.6...v1.0.0-beta.7) (2021-09-23)
 
 ## 🐛 Bug Fixes
