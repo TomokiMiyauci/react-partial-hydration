@@ -1,7 +1,7 @@
 import { useRef, createElement, Fragment, cloneElement } from 'react'
 import { hydrate } from 'react-dom'
 import { display, DEFAULT_PROPS } from '@/constants'
-import { isServer } from '@/utils'
+import { isServer as _isServer } from '@/utils'
 import { useFallback, useIntersection } from '@/hooks'
 import type { ReactHTML, DetailedHTMLProps, HTMLAttributes } from 'react'
 
@@ -16,6 +16,8 @@ type IntersectionProps<T extends keyof ReactHTML> = {
   onFallback?: () => void
   /** Target used for intersection */
   target?: JSX.Element
+  /** For debugging, switch rendering environment server side or client side */
+  isServer?: boolean
 } & IntersectionObserverInit &
   DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>
 
@@ -36,6 +38,7 @@ const Intersection = <T extends keyof ReactHTML>({
   onFallback,
   style,
   target = <div />,
+  isServer = _isServer,
   root,
   rootMargin,
   threshold,
@@ -49,7 +52,8 @@ const Intersection = <T extends keyof ReactHTML>({
   useFallback(
     ref,
     {
-      fallback: createElement(Fragment, null, [targetWithKey, fallback])
+      fallback: createElement(Fragment, null, [targetWithKey, fallback]),
+      afterRender: onFallback
     },
     []
   )
