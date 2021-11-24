@@ -540,6 +540,13 @@
     slash "^3.0.0"
     strip-ansi "^6.0.0"
 
+"@jest/create-cache-key-function@^27.3.1":
+  version "27.3.1"
+  resolved "https://registry.yarnpkg.com/@jest/create-cache-key-function/-/create-cache-key-function-27.3.1.tgz#95d0dda8fb5b340b29399ca1d4de11b78040ffd9"
+  integrity sha512-21lx0HRgkznc5Tc2WGiXVYQQ6Vdfohs6CkLV2FLogLRb52f6v9SiSIjTNflu23lzEmY4EalLgQLxCfhgvREV6w==
+  dependencies:
+    "@jest/types" "^27.2.5"
+
 "@jest/environment@^27.2.0":
   version "27.2.0"
   resolved "https://registry.yarnpkg.com/@jest/environment/-/environment-27.2.0.tgz#48d1dbfa65f8e4a5a5c6cbeb9c59d1a5c2776f6b"
@@ -655,6 +662,17 @@
   version "27.1.1"
   resolved "https://registry.yarnpkg.com/@jest/types/-/types-27.1.1.tgz#77a3fc014f906c65752d12123a0134359707c0ad"
   integrity sha512-yqJPDDseb0mXgKqmNqypCsb85C22K1aY5+LUxh7syIM9n/b0AsaltxNy+o6tt29VcfGDpYEve175bm3uOhcehA==
+  dependencies:
+    "@types/istanbul-lib-coverage" "^2.0.0"
+    "@types/istanbul-reports" "^3.0.0"
+    "@types/node" "*"
+    "@types/yargs" "^16.0.0"
+    chalk "^4.0.0"
+
+"@jest/types@^27.2.5":
+  version "27.2.5"
+  resolved "https://registry.yarnpkg.com/@jest/types/-/types-27.2.5.tgz#420765c052605e75686982d24b061b4cbba22132"
+  integrity sha512-nmuM4VuDtCZcY+eTpw+0nvstwReMsjPoj7ZR80/BbixulhLaiX+fbv8oeLW8WZlJMcsGQsTmMKT/iTZu1Uy/lQ==
   dependencies:
     "@types/istanbul-lib-coverage" "^2.0.0"
     "@types/istanbul-reports" "^3.0.0"
@@ -1153,10 +1171,12 @@
     "@swc/core-win32-ia32-msvc" "1.2.89"
     "@swc/core-win32-x64-msvc" "1.2.89"
 
-"@swc/jest@0.1.5":
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@swc/jest/-/jest-0.1.5.tgz#102e0cd5e82aee8af2df633fcd3b4bcedb42ec1a"
-  integrity sha512-PKKaJ5wqjkpmqQjGVbZxsXn5bIFCToqS1RHg5RbZzLnBL0eOIg8cD3SsnW9d5+im8L6QAWl6pETLZE2QFYSrFA==
+"@swc/jest@0.2.9":
+  version "0.2.9"
+  resolved "https://registry.yarnpkg.com/@swc/jest/-/jest-0.2.9.tgz#99ae1ce1a1e67bb3dfd5cc0e25644e7cdaed1ba2"
+  integrity sha512-SeAAQY83NNmgAQSIv3AANs4mMYbUeueHVTczrvHk+jlpIVmzrVZrkV0PAJ1rAvg9KBHjdnEmuTYYBKEUSCl9DA==
+  dependencies:
+    "@jest/create-cache-key-function" "^27.3.1"
 
 "@testing-library/dom@^8.0.0":
   version "8.5.0"
